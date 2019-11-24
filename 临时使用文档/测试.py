@@ -1,3 +1,8 @@
 from easygui import *
 
-multenterbox('input', title='t', fields=['1', '2', '3', '4'], values=['', '1'])
+
+class Set(EgStore):
+    def __init__(self, value1, value2, filename):
+        super().__init__(filename)
+        self.value1 = value1
+        self.value2 = value2
