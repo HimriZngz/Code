@@ -2,15 +2,21 @@
 # 因此，现在我们要求定义一个 Nstr 类，支持字符串的相减操作：A – B，从 A 中去除所有 B 的子字符串
 
 
-class Nstr:
+class Nstr(str):
     def __sub__(self, other):
-        x = ''
-        for i in other:
-            if issubclass(i,self):
-                x.join(i)
-        return x
+        return self.replace(other, '')
+
+
+"""
+
+妈的，绝了
+
+"""
 
 
 a = Nstr('I love FishC.com!iiiiiiii')
 b = Nstr('i')
-print(a)
+
+print(a-b)
+
+
