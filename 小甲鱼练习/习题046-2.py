@@ -14,22 +14,25 @@ class Mydes:
         self.name = name
 
     def __set__(self, instance, value):
-        self.val = value
-        word = '变量 %s 被修改为 %s \n' % (self.name, self.val)
-        file_name = './小甲鱼练习题辅助文档/%s-%s.pkl' % (self.name, self.val)
+        val = value
+        word = '变量 %s 被修改为 %s \n' % (self.name, val)
+        file_name = './小甲鱼练习题辅助文档/%s.pkl' % self.name
         with open(file_name, 'wb')as f:
             pickle.dump(word, f)
-        print('变量修改了')
+        print('变量被修改了')
 
     def __get__(self, instance, owner):
-
+        file_name = './小甲鱼练习题辅助文档/%s.pkl' % self.name
+        with open(file_name, 'rb')as f:
+            val = pickle.load(f)
         print('变量被读取了')
-        return self.val
+        return val
 
     def __delete__(self, instance):
-        del self.val
-        file_name = './小甲鱼练习题辅助文档/%s-%s.pkl' % (self.name, self.val)
+        # del self.val
+        file_name = './小甲鱼练习题辅助文档/%s-%s.pkl' % self.name
         os.remove(file_name)
+        print('变量被删除了')
 
 
 class Test:
