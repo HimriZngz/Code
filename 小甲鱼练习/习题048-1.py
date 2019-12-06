@@ -2,16 +2,24 @@
 
 
 class Leap_year:
-    def __init__(self, year):
-        self.year = year
-        self.ylist = []
+    def __init__(self):
+        self.year = 2020
+
+    def isleapyear(self, i):
+        if (i % 4 == 0) and (i % 100 != 0) or (i % 400 == 0):
+            return True
+        else:
+            return False
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        for i in range(self.year):
-            if (i % 4 == 0) and (i % 100 != 0) or (i % 400 == 0):
-                self.ylist.append(i)
+        while not self.isleapyear(self.year):
+            self.year -= 1
 
-        return self.ylist
+        ly = self.year
+        self.year -= 1
+        # 两次都有 -=1 是针对于两个不同的情况而做相同的操作，确保不管是不是闰年，年份都会-1
+        return ly
+
