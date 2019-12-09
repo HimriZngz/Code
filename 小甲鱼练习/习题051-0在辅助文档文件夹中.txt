@@ -1,0 +1,25 @@
+或者把他们放在一个路径下
+
+
+写成 
+
+
+参考答案：
+
+# a.py
+import b
+
+def x():
+    print('x')
+
+if __name__ == "__main__":
+    b.y()
+
+# b.py
+import a
+
+def y():
+    print('y')
+
+if __name__ == "__main__":
+    a.x()

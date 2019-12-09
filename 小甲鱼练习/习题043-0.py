@@ -4,7 +4,7 @@
 class J:
     def __init__(self, *args):
         if not args:
-            print('还没有传入参数')
+            print('\n还没有传入参数')
         else:
             print('传入了%s个参数，分别是:' % len(args), end='')
             for i in args:
