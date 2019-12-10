@@ -9,6 +9,8 @@ url = input('请输入URL：')
 
 response = ur.urlopen(url)
 encode = chardet.detect(response.read())    # detect返回的是一个字典，下面例子
+
+
 print('该网页使用的编码是:%s' % encode['encoding'])
 
 
