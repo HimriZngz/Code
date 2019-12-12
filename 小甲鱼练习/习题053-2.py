@@ -5,35 +5,41 @@ import urllib.request as ur
 import os
 import chardet
 
-os.chdir(os.curdir)
 
-with open('./小甲鱼练习题辅助文档/习题053/urls.txt', 'r')as f:
-    file = f.readlines()
+def record():
+    #   把os定位到当前目录
+    os.chdir(os.curdir)
+    #   开始打开网址文件
+    with open('./小甲鱼练习题辅助文档/习题053/urls.txt', 'r')as f:
+        file = f.readlines()
 
-    for site in file:
-        # strip() 默认删除字符前后的\n
-        site = site.strip()
+        for site in file:
+            # strip() 默认删除字符前后的\n
+            site = site.strip()
 
-        # 以域名的 . 作为分隔符，把主名提出来当下面要写的文件名
-        count = site.split('.')[1]
-        file_path = './小甲鱼练习题辅助文档/习题053/urls_' + count + '.txt'
+            # 以域名的 . 作为分隔符，把主名提出来当下面要写的文件名
+            count = site.split('.')[1]
+            file_path = './小甲鱼练习题辅助文档/习题053/urls_' + count + '.txt'
 
-        # 开始打开指定地址的网页
-        response = ur.urlopen(site)
+            # 开始打开指定地址的网页
+            response = ur.urlopen(site)
 
-        # 获取该网页的编码格式
-        # encode = chardet.detect(response.read())
-        # encode_encode = encode['encoding']
-        """
-        这里用识别的编码来解码会返回418错误 所以注释掉
-        """
+            # 获取该网页的编码格式
+            # encode = chardet.detect(response.read())
+            # encode_encode = encode['encoding']
+            """
+            这里用识别的编码来解码会返回418错误 所以注释掉
+            """
 
-        # 读一下获取的response，然后以原编码格式解码，准备写入txt
-        html = response.read().decode('utf-8')
+            # 读一下获取的response，然后以原编码格式解码，准备写入txt
+            html = response.read().decode('utf-8')
 
-        with open(file_path, 'w', errors='ignore')as e:
-            # 写入txt，编码有错误忽略 ↑↑↑↑↑↑↑
-            e.write(html)
+            with open(file_path, 'w', errors='ignore')as e:
+                # 写入txt，编码有错误忽略 ↑↑↑↑↑↑↑
+                e.write(html)
+
+if __name__ == "__main__":
+    record()
 
 
 """

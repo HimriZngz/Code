@@ -5,13 +5,17 @@ import urllib.request as ur
 import chardet
 
 
-url = input('请输入URL：')
+def detect():
+    url = input('请输入URL：')
 
-response = ur.urlopen(url)
-encode = chardet.detect(response.read())    # detect返回的是一个字典，下面例子
+    response = ur.urlopen(url)
+    encode = chardet.detect(response.read())    # detect返回的是一个字典，下面例子
+
+    print('该网页使用的编码是:%s' % encode['encoding'])
 
 
-print('该网页使用的编码是:%s' % encode['encoding'])
+if __name__ == '__main__':
+    detect()
 
 
 """
