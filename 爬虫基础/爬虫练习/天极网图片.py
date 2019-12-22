@@ -56,8 +56,9 @@ def get_img(url):
     os.mkdir(main_folder)
     os.chdir(main_folder)
 
+    print('----- 总共有%s个栏目在下载 -----' % len(info_list))
+
     for number in range(len(info_list)):
-        print('总共有%s个栏目在下载' % len(info_list))
         name = info_list[number][0]        # 拿到主图的名称
         link = info_list[number][1]        # 拿到主图的链接
         page = info_list[number][2][0]     # 拿到主图的页数
@@ -66,14 +67,14 @@ def get_img(url):
 
         if page is 1:
             # 打开一次链接，找到图片链接，打开，存入
-            print(name, '正在下载')
+            print('===' + name + '===', '正在下载')
             photo = img_data(link)
             os.mkdir(name)
             os.chdir(name)
             with open('000.jpg', 'wb')as f:
                 f.write(photo)
             os.chdir('..')
-            print(name, '下载好了')
+            print('===' + name + '===', '下载好了')
 
             time.sleep(1)
 
@@ -81,20 +82,24 @@ def get_img(url):
             # 把链接依次加入 _x 按次数打开链接
             os.mkdir(name)
             os.chdir(name)
-            print(name, '有%s张正在下载' % int(page))
+            print('===' + name + '===', '有%s张正在下载' % int(page))
+
+            count = 2  # 第2页那个就是从_2开始的
+
             for num in range(int(page)):
                 photo = img_data(link)
                 file_name = str(num) + '.jpg'
                 with open(file_name, 'wb')as f:
                     f.write(photo)
 
-                count = 2  # 第2页那个就是从_2开始的
-                postfix = link.split('.')[-1]
+                # postfix = link.split('.')[-1]
                 link = link.replace(link.split('.')[-2], fu_name + '_' + str(count))
+                #  这里生成每个栏目图片的后续链接，使用下面一句print可以查看
+                # print(link)
                 count += 1
 
             os.chdir('..')
-            print(name, '下载好了')
+            print('===' + name + '===', '下载好了')
 
             time.sleep(1)
 
