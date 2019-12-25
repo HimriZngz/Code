@@ -6,8 +6,8 @@ from lxml import etree
 def open_url(url):
     """打开链接返回2进制文本网页"""
     proxies = {
-        'https': 'https://177.93.97.132:8080',
-        'http': 'http://94.75.125.119:8080'
+        'https': 'https://127.0.0.1:9090',
+        'http': 'http://127.0.0.1:9090'
     }
     header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0'}
     response = requests.get(url, headers=header, proxies=proxies, verify=False)
