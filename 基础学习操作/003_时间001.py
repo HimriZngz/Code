@@ -33,5 +33,6 @@ from datetime import timezone
 uct8 = timezone(timedelta(hours=8))
 xianzai = datetime.now()
 print(xianzai)
+print(type(xianzai))
 changetz = xianzai.replace(tzinfo=uct8)
 print(changetz)
