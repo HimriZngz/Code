@@ -15,9 +15,14 @@
 #     print(l2)
 
 
-ll = 'http://www.mmonly.cc/mmtp/xgmn/317520_12.html'
-ww = '317520_2.html'
-add = ll.split('/')[-4:-1]
-new_next_page = 'http://%s/%s/%s/%s' % (add[0], add[1], add[2], ww)
+# ll = 'http://www.mmonly.cc/mmtp/xgmn/317520_12.html'
+# ww = '317520_2.html'
+# add = ll.split('/')[-4:-1]
+# new_next_page = 'http://%s/%s/%s/%s' % (add[0], add[1], add[2], ww)
+#
+# print(new_next_page)
 
-print(new_next_page)
+
+a = input(':')
+
+print(a)
